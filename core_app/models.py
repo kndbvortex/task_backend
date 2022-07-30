@@ -6,7 +6,8 @@ class Task(models.Model):
     reminder = models.BooleanField(default=True)
     
     class Meta:
-        ordering = ['id']
+        ordering = ['-day', 'id']
+        unique_together = ('text', 'day')
     
     def __str__(self):
         return f'{self.id}-{self.text}'
